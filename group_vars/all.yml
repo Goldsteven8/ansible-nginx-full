@@ -1,0 +1,5 @@
+ansible_python_interpreter: /usr/bin/python3
+web_user: webappi
+web_root: /opt/static-sites
+nginx_site_name: static-site
+
