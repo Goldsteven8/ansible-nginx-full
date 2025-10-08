@@ -1,0 +1,22 @@
+---
+- name: Configure UFW firewall
+  hosts: all
+  become: yes
+  tasks:
+    - name: Allow SSH and HTTP
+      ufw:
+        rule: allow
+        port: "{{ item }}"
+      loop:
+        - 22
+        - 80
+
+    - name: Deny all other incoming connections
+      ufw:
+        default: deny
+        direction: incoming
+
+    - name: Ensure firewall is enabled
+      ufw:
+        state: enabled
+

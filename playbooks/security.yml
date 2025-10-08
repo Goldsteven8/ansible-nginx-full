@@ -1,0 +1,23 @@
+---
+- name: Updates and security
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure unattended-upgrades is installed
+      apt:
+        name: unattended-upgrades
+        state: present
+        update_cache: yes
+
+    - name: Ensure fail2ban is installed and running
+      apt:
+        name: fail2ban
+        state: present
+        update_cache: yes
+
+    - name: Ensure fail2ban service is started and enabled
+      service:
+        name: fail2ban
+        state: started
+        enabled: yes
+

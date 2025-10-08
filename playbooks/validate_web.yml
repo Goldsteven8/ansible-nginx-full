@@ -1,0 +1,18 @@
+---
+- name: Validate NGINX web server
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Test HTTP response
+      uri:
+        url: http://localhost
+        return_content: yes
+      register: result
+
+    - name: Check if content is correct
+      assert:
+        that:
+          - "'Welcome to my site!' in result.content"
+        fail_msg: "Web server content is incorrect"
+        success_msg: "Web server content is correct"
+
