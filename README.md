@@ -33,4 +33,18 @@ Po spuštění playbooku projekt na cílovém serveru:
 
 ## Struktura repozitáře
 
+inventory/ # definice hostů
+group_vars/ # konfigurace (proměnné)
+roles/nginx/ # role: instalace + konfigurace NGINX + šablony
+playbooks/ # doplňkové playbooky (firewall, ssh, security, validace)
+site.yml # hlavní playbook
+
+## Spuštění
+
+```bash
+ansible-playbook -i inventory/hosts.ini site.yml
+
+
+
+
 
